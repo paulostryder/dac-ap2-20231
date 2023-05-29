@@ -67,20 +67,20 @@
 				<p:column headerText="Ações">
 					<p:column>
 						<p:commandButton icon="pi pi-search" oncomplete="PF('visualizar').show()" title="Visualizar" update="form_view"
-							style="border: 5px solid;"> 												
+							style="border: 5px solid;" styleClass="rounded-button ui-button-success ui-button-flat"> 												
 							<f:setPropertyActionListener value="#{i}" target="#{incidenteBean.incidente}"/>								
 						</p:commandButton>
 															
 					</p:column>				
 					<p:column>
 						<p:commandButton icon="pi pi-pencil" oncomplete="PF('editar').show()" title="Editar" update="form_edit"
-							style="border: 5px solid;"> 							
+							style="border: 5px solid;" styleClass="rounded-button ui-button-flat"> 							
 							<f:setPropertyActionListener value="#{i}" target="#{incidenteBean.incidente}"/>							
 						</p:commandButton>									
 					</p:column>	
 					<p:column>
 						<p:commandButton icon="pi pi-trash" oncomplete="PF('excluir').show()" title="Deletar" update="form_del" 
-							style="border: 5px solid;">						
+							style="border: 5px solid;" styleClass="rounded-button ui-button-help ui-button-flat">						
 							<f:setPropertyActionListener value="#{i}" target="#{incidenteBean.incidente}"/>							
 						</p:commandButton>														
 					</p:column>				
