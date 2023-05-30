@@ -100,39 +100,40 @@
 		
 	<p:dialog header="Visualizar Incidentes" widgetVar="visualizar" >
 		<h:form id="form_view" >
-		<p:dataGrid id="incidentGrid" value="#{incidenteBean.list}"  rows="5" >
+		
 			<h:panelGrid columns="6" cellpadding="5" id="visualizar">
 					<p:outputLabel for="id" value="Id: "/>
 					<p:inputText id="id" value="#{incidenteBean.incidente.id}" disabled="true"/>
 					
 					<p:outputLabel for="nomeVitima" value="Nome da Vitima: "/>
-					<p:inputTextarea id="nomeVitima" value="#{incidenteBean.incidente.nomeVitima}" disabled="true"/>		
+					<p:inputTextarea id="nomeVitima" value="#{incidenteBean.incidente.nomeVitima}" style="width: 100%" disabled="true" />		
 									
 					
 					<p:outputLabel for="violacao" value="Violação de Direito: "/>
-					<p:inputTextarea id="violacao" value="#{incidenteBean.incidente.violacaoVitima}" disabled="true"/>		
+					<p:inputTextarea id="violacao" value="#{incidenteBean.incidente.violacaoVitima}" disabled="true"  style="width: 100%"/>		
 					
 					
 					<p:outputLabel for="idadeVitima" value="Idade da Vitima: "/>
-					<p:inputText id="idadeVitima" value="#{incidenteBean.incidente.idadeVitima}" style="width: 100%"  disabled="true"/>
+					<p:inputText id="idadeVitima" value="#{incidenteBean.incidente.idadeVitima}"   disabled="true"/>
 					
 					<p:outputLabel for="sexoVitima" value="Sexo da Vitima: "/>
-					<p:inputText id="sexoVitima" value="#{incidenteBean.incidente.sexoVitima}" style="width: 100%" disabled="true"/>
+					<p:inputText id="sexoVitima" value="#{incidenteBean.incidente.sexoVitima}"  disabled="true"/>
 					
 					<p:outputLabel for="enderecoVitima" value="Endereco da Vitima: "/>
-					<p:inputText id="enderecoVitima" value="#{incidenteBean.incidente.enderecoVitima}" style="width: 100%" disabled="true"/>
+					<p:inputText id="enderecoVitima" value="#{incidenteBean.incidente.enderecoVitima}"   disabled="true"/>
 					
 					<p:outputLabel for="parenteAgressor" value="Parente do agressor: "/>
-					<p:inputText id="parenteAgressor" value="#{incidenteBean.incidente.parenteAgressor}" style="width: 100%" disabled="true"/>
+					<p:inputText id="parenteAgressor" value="#{incidenteBean.incidente.parenteAgressor}"   disabled="true"/>
 					
 					<p:outputLabel for="relatoVitima" value="Relato Vitima: "/>
-					<p:inputTextarea id="relatoVitima" value="#{incidenteBean.incidente.relatoVitima}" disabled="true" />
+					<p:inputTextarea id="relatoVitima" value="#{incidenteBean.incidente.relatoVitima}" disabled="true" style="width: 100%" />
 					
-					<p:outputLabel for="violacaoVitima" value="Violacao Vitima: "/>
-					<p:inputTextarea id="violacaoVitima" value="#{incidenteBean.incidente.violacaoVitima}" disabled="true" />				
+					<p:outputLabel for="providencias" value="Providencia Tomada: "/>
+					<p:inputTextarea id="providencias" value="#{incidenteBean.incidente.providencias}" disabled="true"  style="width: 100%"/>
+														
 					
 					<p:outputLabel for="nomeAgressor" value="Nome Agressor: "/>
-					<p:inputText id="nomeAgressor" value="#{incidenteBean.incidente.nomeAgressor}" style="width: 100%" disabled="true"/>
+					<p:inputText id="nomeAgressor" value="#{incidenteBean.incidente.nomeAgressor}"  disabled="true" style="width: 100%"/>
 					
 					<p:outputLabel for="dataCadastro" value="Data de Cadastro: "/>
 					<p:inputText id="dataCadastro" value="#{incidenteBean.incidente.dataCadastro}" disabled="true">
@@ -140,14 +141,13 @@
 					</p:inputText>
 																															
 			</h:panelGrid>
-			</p:dataGrid>
-		</h:form>
+			</h:form>
 	</p:dialog>			
 	
 	<p:dialog header="Editar incidente" widgetVar="editar">
 		<h:form id="form_edit">
-		<p:dataGrid id="incidentGrid1" value="#{incidenteBean.list}"  rows="5" >
-			<h:panelGrid columns="8" cellpadding="10" id="editar">
+		
+			<h:panelGrid columns="6" cellpadding="5" id="editar">
 				<p:outputLabel for="id" value="Id: "/>
 					<p:inputText id="id" value="#{incidenteBean.incidente.id}" disabled="true" style="width: 100%"/>
 					
@@ -163,11 +163,19 @@
 					<p:outputLabel for="enderecoVitima" value="Endereco da Vitima: "/>
 					<p:inputText id="enderecoVitima" value="#{incidenteBean.incidente.enderecoVitima}" style="width: 100%"/>
 					
+					<p:outputLabel for="relatoVitima" value="Relato Vitima: "/>
+					<p:inputTextarea id="relatoVitima" value="#{incidenteBean.incidente.relatoVitima}"  />	
+					
 					<p:outputLabel for="parenteAgressor" value="Parente do agressor: "/>
 					<p:inputText id="parenteAgressor" value="#{incidenteBean.incidente.parenteAgressor}" style="width: 100%"/>				
 					
 					<p:outputLabel for="nomeAgressor" value="Suporte Agressor: "/>
 					<p:inputText id="nomeAgressor" value="#{incidenteBean.incidente.nomeAgressor}" style="width: 100%"/>
+					
+					<p:outputLabel for="providencias" value="Providencia Tomada: "/>
+					<p:inputTextarea id="providencias" value="#{incidenteBean.incidente.providencias}"   />
+					
+					
 					
 					<p:outputLabel for="violacaoVitima" value="Violação de Direito: "/>
 				
@@ -184,7 +192,7 @@
 		      		</p:selectOneMenu>		
 						
 			</h:panelGrid>
-			</p:dataGrid>
+			
 				
 			<p:commandButton value="Atualizar" action="#{incidenteBean.editar}" oncomplete="PF('editar').hide()" style="background-color:#8e44ad; margin-top: 40px;" update="form1"/>		
 		</h:form>
