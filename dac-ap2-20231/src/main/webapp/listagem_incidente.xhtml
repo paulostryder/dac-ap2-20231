@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Listando incidentes</title>
+</h:head>
+
+<h:body>	
+		
+	<h:form id="form1">
+			
+		<p:panel header="Página de Listagem de incidentes" >
+		
+			
+			
+			
+				
+				
+			
+			<p:dataTable id="dt" value="#{incidenteBean.list}" var="i" selection="#{incidenteBean.incidente}" selectionMode="single" rowKey="#{l.id}"
+			paginator="true" rows="3" paginatorPosition="bottom">	
+										
+				<p:column headerText="Id">
+					<p:column>
+						<p:outputLabel value="#{i.id}"/>							
+					</p:column>										
+				</p:column>
+				<p:column headerText="Vítima">
+					<p:column>
+						<p:outputLabel value="#{i.nomeVitima}"/>							
+					</p:column>										
+				</p:column>
+				<p:column headerText="Suposto Agressor">
+					<p:column>
+						<p:outputLabel value="#{i.nomeAgressor}"/>							
+					</p:column>										
+				</p:column>
+				<p:column headerText="Violação de Direito">
+					<p:column>
+						<p:outputLabel value="#{i.violacaoVitima}"/>							
+					</p:column>										
+				</p:column>
+				<p:column headerText="Data de Cadastro" sortBy="#{i.dataCadastro}">
+					<p:column>
+						<p:outputLabel value="#{i.dataCadastro}">
+							<f:convertDateTime pattern="dd/MM/yyyy - HH:mm:ss" timeZone="GMT-03:00"/>
+						</p:outputLabel>							
+					</p:column>										
+				</p:column>
+								
+				<p:column headerText="Ações">
+					<p:column>
+						<p:commandButton icon="pi pi-search" oncomplete="PF('visualizar').show()" title="Visualizar" update="form_view"
+							style="border: 5px solid;" styleClass="rounded-button ui-button-success ui-button-flat"> 												
+							<f:setPropertyActionListener value="#{i}" target="#{incidenteBean.incidente}"/>								
+						</p:commandButton>
+															
+					</p:column>				
+					<p:column>
+						<p:commandButton icon="pi pi-pencil" oncomplete="PF('editar').show()" title="Editar" update="form_edit"
+							style="border: 5px solid;" styleClass="rounded-button ui-button-flat"> 							
+							<f:setPropertyActionListener value="#{i}" target="#{incidenteBean.incidente}"/>							
+						</p:commandButton>									
+					</p:column>	
+					<p:column>
+						<p:commandButton icon="pi pi-trash" oncomplete="PF('excluir').show()" title="Deletar" update="form_del" 
+							style="border: 5px solid;" styleClass="rounded-button ui-button-help ui-button-flat">						
+							<f:setPropertyActionListener value="#{i}" target="#{incidenteBean.incidente}"/>							
+						</p:commandButton>														
+					</p:column>				
+										
+				</p:column>
+							
+			</p:dataTable>
+			
+			<p:linkButton action="Cadastro_incidente" outcome="cadastro_incidente" value="Cadastrar" icon="pi pi-save" 
+				style="border: 5px solid;"  />
+				
+				
+				<p:linkButton action="Listagem_usuario" outcome="listagem_usuario" value="Usuários" icon="pi pi-users" 
+					style="border: 5px solid;" /> 										
+				
+					
+				<p:linkButton action="Sair" outcome="index" icon="pi pi-power-off" title="Sair" 
+					style="border: 5px solid; "/>															
+		
+		</p:panel>	
+		
+	</h:form>
+	
+	<p:dialog header="Quantide de Incidentes" widgetVar="dlg1" minHeight="40" width="350" showEffect="fade">
+ 		<p:outputLabel value="#{incidenteBean.contarIncidente}"/>
+	</p:dialog>
+		
+	<p:dialog header="Visualizar Incidentes" widgetVar="visualizar" >
+		<h:form id="form_view" >
+			<h:panelGrid columns="2" cellpadding="5" id="visualizar">
+					<p:outputLabel for="id" value="Id: "/>
+					<p:inputText id="id" value="#{incidenteBean.incidente.id}" disabled="true"/>
+					
+					<p:outputLabel for="nomeVitima" value="Nome da Vitima: "/>
+					<p:inputTextarea id="nomeVitima" value="#{incidenteBean.incidente.nomeVitima}" disabled="true"/>				
+					
+					<p:outputLabel for="nomeAgressor" value="Suporte Agressor: "/>
+					<p:inputTextarea id="nomeAgressor" value="#{incidenteBean.incidente.nomeAgressor}" disabled="true"/>				
+					
+					<p:outputLabel for="violacao" value="Violação de Direito: "/>
+					<p:inputTextarea id="violacao" value="#{incidenteBean.incidente.violacaoVitima}" disabled="true"/>
+					
+					<p:outputLabel for="dataCadastro" value="Data de Cadastro: "/>
+					<p:inputText id="dataCadastro" value="#{incidenteBean.incidente.dataCadastro}" disabled="true">
+						<f:convertDateTime pattern="dd/MM/yyyy - HH:mm:ss" timeZone="GMT-03:00"/>
+					</p:inputText>
+																															
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>			
+	
+	<p:dialog header="Editar incidente" widgetVar="editar">
+		<h:form id="form_edit">
+			<h:panelGrid columns="2" cellpadding="5" id="editar">
+				<p:outputLabel for="id" value="Id: "/>
+					<p:inputText id="id" value="#{incidenteBean.incidente.id}" disabled="true" style="width: 10%"/>
+					
+					<p:outputLabel for="nomeVitima" value="Nome da Vitima: "/>
+					<p:inputText id="nomeVitima" value="#{incidenteBean.incidente.nomeVitima}" style="width: 100%"/>				
+					
+					<p:outputLabel for="nomeAgressor" value="Suporte Agressor: "/>
+					<p:inputText id="nomeAgressor" value="#{incidenteBean.incidente.nomeAgressor}" style="width: 100%"/>
+					
+					<p:outputLabel for="violacaoVitima" value="Violação de Direito: "/>
+					<p:selectOneRadio id="violacaoVitima" value="#{incidenteBean.incidente.violacaoVitima}" layout="grid" columns="3" styleClass="grid-radio" style="margin: 10px 0;">
+			           <f:selectItem itemLabel="Violência física" itemValue="violencia_fisica"/>
+			           <f:selectItem itemLabel="Negligência" itemValue="Negligencia"/>
+			           <f:selectItem itemLabel="Violência sexual" itemValue="violencia_sexual"/>
+			           <f:selectItem itemLabel="Violência psicológica" itemValue="Violencia_psicologica"/>
+			           <f:selectItem itemLabel="Automutilação" itemValue="Automutilacao"/>
+			           <f:selectItem itemLabel="Suicídio" itemValue="Suicidio"/>
+			           <f:selectItem itemLabel="Gravidez menor de 14 anos" itemValue="Gravidez_menor_14_anos"/>
+			           <f:selectItem itemLabel="Trabalho infantil" itemValue="Trabalho_infantil"/>
+			           <f:selectItem itemLabel="Bullying" itemValue="Bullying"/>			           
+		      		</p:selectOneRadio>			
+						
+			</h:panelGrid>
+				
+			<p:commandButton value="Atualizar" action="#{incidenteBean.editar}" oncomplete="PF('editar').hide()" style="background-color:#8e44ad; margin-top: 40px;" update="form1"/>		
+		</h:form>
+	</p:dialog>
+	
+	<p:dialog header="Deseja relamente excluir o incidente?" widgetVar="excluir">
+		<h:form id="form_del">
+			<h:panelGrid columns="2" cellpadding="5" id="excluir">
+				<p:inputText id="incidente" value="#{incidenteBean.incidente.id}" disabled="true"/>
+			</h:panelGrid>
+				
+			<p:commandButton value="Sim" action="#{incidenteBean.deletar}" oncomplete="PF('excluir').hide()" style="margin-right: 10px; margin-top: 20px;" update="form1"/>	
+			<p:commandButton value="Não" oncomplete="PF('excluir').hide()" />			
+		</h:form>					
+	</p:dialog>	
+
+</h:body>
+
+</html>
