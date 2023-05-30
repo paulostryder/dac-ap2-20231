@@ -22,13 +22,12 @@
 		
 		
 			
-				<p:linkButton action="Cadastro_usuario" outcome="cadastro_usuario" value="Novo" icon="pi pi-user" 
+				<p:linkButton action="Cadastro_usuario" outcome="cadastro_usuario" value="Novo" icon="pi pi-user-plus" 
 					style="border: 5px solid; "/>					
 					
-				<p:linkButton action="Fechar" outcome="index" icon="pi pi-sign-out" title="Fechar" 
+				<p:linkButton action="Fechar" outcome="index" icon="pi pi-power-off" title="Fechar" 
 					style="border: 5px solid; "/>
-						
-										
+									
 			
 			
 			<p:dataTable id="datatable1" value="#{usuarioBean.list}" var="u" selection="#{usuarioBean.usuario}" selectionMode="single" rowKey="#{l.id}"
@@ -59,22 +58,22 @@
 				
 				<p:column headerText="Ações">
 					<p:column>
-						<p:commandButton icon="pi pi-search" oncomplete="PF('visualizar').show()" title="Visualizar" update="form_view"
-							style="border: 5px solid;"> 													
+						<p:commandButton icon="pi pi-users" oncomplete="PF('visualizar').show()" title="Visualizar" update="form_view"
+							style="border: 5px solid;" styleClass="rounded-button ui-button-success ui-button-outlined"> 													
 							<f:setPropertyActionListener value="#{u}" target="#{usuarioBean.usuario}"/>								
 						</p:commandButton>															
 					</p:column>				
 					
 					<p:column>
-						<p:commandButton icon="pi pi-pencil" oncomplete="PF('editar').show()" title="Editar" update="form_edit"
-							style="border: 5px solid;">							
+						<p:commandButton icon="pi pi-user-edit" oncomplete="PF('editar').show()" title="Editar" update="form_edit"
+							style="border: 5px solid;" styleClass="rounded-button ui-button-outlined">							
 							<f:setPropertyActionListener value="#{u}" target="#{usuarioBean.usuario}"/>							
 						</p:commandButton>									
 					</p:column>	
 					
 					<p:column>
-						<p:commandButton icon="pi pi-trash" oncomplete="PF('excluir').show()" title="Deletar" update="form_del"
-							style="border: 5px solid;">						
+						<p:commandButton icon="pi pi-user-minus" oncomplete="PF('excluir').show()" title="Deletar" update="form_del"
+							style="border: 5px solid;" styleClass="rounded-button ui-button-help ui-button-outlined">						
 							<f:setPropertyActionListener value="#{u}" target="#{usuarioBean.usuario}"/>							
 						</p:commandButton>														
 					</p:column>									
@@ -106,6 +105,7 @@
 				<p:datePicker id="dataCadastro" value="#{usuarioBean.usuario.dataCadastro}" disabled="true" style="width: 300px;" />		
 															
 			</h:panelGrid>
+			
 		</h:form>
 	</p:dialog>			
 	
@@ -134,6 +134,9 @@
 				
 			<p:commandButton value="Sim" action="#{usuarioBean.deletar}" oncomplete="PF('excluir').hide()" style="background-color:#27ae60; margin-right: 10px; margin-top: 20px;" update="form1"/>	
 			<p:commandButton value="Não" oncomplete="PF('excluir').hide()" style="background-color:#e55039"/>			
+		
+			
+		
 		</h:form>					
 	</p:dialog>	
 

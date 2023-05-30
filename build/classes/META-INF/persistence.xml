@@ -6,9 +6,9 @@
     <persistence-unit name="vitimaPU">
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/dacap220231" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/dacap220231" />
             <property name="javax.persistence.jdbc.user" value="postgres" />
-            <property name="javax.persistence.jdbc.password" value="q1w2e3r4" />
+            <property name="javax.persistence.jdbc.password" value="7539512022" />
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="update" />

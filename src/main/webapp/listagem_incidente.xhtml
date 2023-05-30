@@ -11,7 +11,7 @@
 	<title>Listando incidentes</title>
 </h:head>
 
-<h:body style="background-color: #fdedfcbd;">	
+<h:body>	
 		
 	<h:form id="form1">
 			
@@ -21,17 +21,7 @@
 			
 			
 				
-				<p:linkButton action="Cadastro_incidente" outcome="cadastro_incidente" value="Cadastrar" icon="pi pi-book" 
-				style="border: 5px solid;" />
 				
-				
-				<p:linkButton action="Listagem_usuario" outcome="listagem_usuario" value="Usuários" icon="pi pi-users" 
-					style="border: 5px solid;" /> 										
-				
-					
-				<p:linkButton action="Sair" outcome="index" icon="pi pi-sign-out" title="Sair" 
-					style="border: 5px solid; "/>															
-		
 			
 			<p:dataTable id="dt" value="#{incidenteBean.list}" var="i" selection="#{incidenteBean.incidente}" selectionMode="single" rowKey="#{l.id}"
 			paginator="true" rows="3" paginatorPosition="bottom">	
@@ -89,6 +79,17 @@
 							
 			</p:dataTable>
 			
+			<p:linkButton action="Cadastro_incidente" outcome="cadastro_incidente" value="Cadastrar" icon="pi pi-save" 
+				style="border: 5px solid;"  />
+				
+				
+				<p:linkButton action="Listagem_usuario" outcome="listagem_usuario" value="Usuários" icon="pi pi-users" 
+					style="border: 5px solid;" /> 										
+				
+					
+				<p:linkButton action="Sair" outcome="index" icon="pi pi-power-off" title="Sair" 
+					style="border: 5px solid; "/>															
+		
 		</p:panel>	
 		
 	</h:form>

@@ -11,43 +11,47 @@
 	<title>Incidente</title>
 </h:head>
 
-<h:body style="background-color: #fdedfcbd; padding: 0 50px;">
-	<h:form id="form" style="background-color: #fdedfcbd;">
+<h:body>
+	<h:form id="form">
 
 		<p:messages id="messages" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
 
-			<div>
-				<p:link outcome="listagem_incidente" value="voltar"
-					style="display: flex;
-					justify-content: end; 
-					margin-top: 10px;
-					margin-bottom: 10px;"/>
-			</div>
+			
 			
 			
 			<div style="text-align: center; 
 				font-size: 1.5rem; 
-				color: #3d4bbe; 
+				color: #FF8C00; 
 				margin-top: 20px; 
 				font-weight: bolder;">
+					
+					ANEXO 01: 
+			</div>
+			
+			<div style="text-align: center; 
+				font-size: 1.5rem; 
+				color: #FFA500; 
+				margin-top: 20px; 
+				font-weight: bolder;">
+					
 					RELATÓRIO DE INCIDENTES DE VIOLAÇÃO DE DIREITOS JUNTO À CRIANÇAS E ADOLESCENTES 
 			</div>
 			<div style="margin: 30px 0px 10px 50px;">
-				<span style="font-size: 1rem; color: #000;">
+				<span style="font-size: 1rem; color: #FFA500;">
 					* Estas informações são sigilosas e só devem ter acesso as pessoas diretamente 
 					envolvidas na resolução do caso ou responsáveis por relatá-lo.
 				</span>
 				
 			</div>
 		<h:panelGroup columns="2" style="display: flex; justify-content: space-between;">
-			<p:panel header="VÍTIMA" style="width: 100%; color: #3d4bbe; padding: 20px 10px 30px 50px;">	
+			<p:panel header="VÍTIMA" style="width: 100%; color: #0000; padding: 20px 10px 30px 50px;">	
 				<h:panelGrid columns="3" style="width: 100%; padding: 10px 10px 10px 20px;">
 	
 					<div  style="margin-bottom: 50px; ">
-						<p:outputLabel value="Nome: " />
-						<p:inputText value="#{incidenteBean.incidente.nomeVitima}" style="width:95%; margin: 10 0 40px 0;" required="true" requiredMessage="Campo Obrigatorio" />
+						<p:outputLabel value="Nome: "/>
+						<p:inputText value="#{incidenteBean.incidente.nomeVitima}" style="width:95%; margin: 10 0 40px 0;" required="true" requiredMessage="Campo Obrigatorio"/>
 					</div>
 	
 					<div style="margin-bottom: 50px">
@@ -60,11 +64,11 @@
 					
 					<div style="margin-bottom: 50px">
 						<p:outputLabel value="Idade: " />
-						<p:inputText type="number" value="#{incidenteBean.incidente.idadeVitima}" style="width:95%; margin: 20px 0;"/>
+						<p:inputNumber id="input01" value="#{incidenteBean.incidente.idadeVitima}" minValue="1" decimalPlaces="0" style="width:95%; margin: 20px 0;" />
 					</div>
 					
 					<div style="margin-bottom: 50px">
-						<p:outputLabel value="Esolaridade: " />
+						<p:outputLabel value="Escolaridade: " />
 						<p:selectOneMenu id="escolarVitima" value="#{incidenteBean.incidente.escolarVitima}" style="width:95%; margin: 20px 0;">
 		                    <f:selectItem itemLabel=" " itemValue=" "/>
 		                    <f:selectItem itemLabel="Fundamental" itemValue="Fundamental"/>
@@ -124,7 +128,7 @@
 					
 					<div >
 						<p:outputLabel value="Idade: " />
-						<p:inputText type="number" value="#{incidenteBean.incidente.idadeAgressor}" style="width:95%; margin: 5px 0;"/>
+						<p:inputNumber id="input02" value="#{incidenteBean.incidente.idadeAgressor}" minValue="1" decimalPlaces="0" style="width:95%; margin: 20px 0;" />
 					</div>
 					
 					<div >
@@ -202,7 +206,7 @@
 		<p:panel header="INCIDENTE" style="padding: 10px 50px;">
 			
 			<div style="padding: 10px 40px;">
-				<span style="font-size: 1rem; color: #000;">
+				<span style="font-size: 1rem; color: #FFA500;">
 					Relate o que a criança/adolescente contou para você. Tente ser o mais claro possivel,	mas não insista 
 					com a vitima para que ela diga além do que ela consegue, pois isso pode acarretar mais dor para ela.
 				</span>
@@ -241,7 +245,7 @@
 		<p:panel header="PROVIDÊNCIAS" style="padding: 10px 50px;">
 			
 			<div style="padding: 10px 40px;">
-				<span style="font-size: 1rem; color: #000;">
+				<span style="font-size: 1rem; color: #FFA500;">
 					Que providências foram tomadas?		
 				</span>
 			</div>
@@ -261,9 +265,14 @@
 		</div>
 				
 		<div style="margin: 30px 0 50px 50px;">
-			<p:commandButton value="Enviar" action="#{incidenteBean.salvar}" update="form"
-				style="	border-radius: 25px; margin-right: 10px;width: 8rem;" />
+			<p:commandButton value="Salvar" action="#{incidenteBean.salvar}" update="form"
+				style="	border-radius: 25px; margin-right: 10px;width: 8rem;" styleClass="rounded-button ui-button-warning" />
 		</div>
+		<div style="margin: 30px 0 50px 50px;">
+			<p:link outcome="listagem_incidente" value="voltar"
+				style="	border-radius: 25px; margin-right: 10px;width: 8rem;"/>
+		</div>
+		
 	</h:form>
 </h:body>
 </html>
